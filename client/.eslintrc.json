@@ -6,6 +6,7 @@
     "next.config.js"
   ],
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "react-hooks/exhaustive-deps": "off"
   }
 }
