@@ -18,10 +18,12 @@ export class MessagesGateway {
 
   @SubscribeMessage('createMessage')
   public async create(
-    @MessageBody() createMessageDto: CreateMessageDto
+    @MessageBody() messageForm: CreateMessageDto,
+    @ConnectedSocket() client: Socket
   ) {
     const message = await this.messagesService.create(
-      createMessageDto
+      messageForm,
+      client.id
     );
     this.server.emit('message', message);
     return message;

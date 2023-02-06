@@ -7,9 +7,11 @@ export class MessagesService {
   private messages: Message[] = [{ name: 'Robot', text: 'heyooo' }];
   private clientToUser = {};
 
-  public create(createMessageDto: CreateMessageDto) {
-    // TODO: to be improved
-    const message = createMessageDto;
+  public create(messageForm: CreateMessageDto, clientId: string) {
+    const message: Message = {
+      name: this.clientToUser[clientId],
+      text: messageForm.text
+    };
     this.messages.push(message);
     return message;
   }
